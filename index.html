@@ -178,7 +178,7 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 <div class="ti" id="tInfo"></div>
 <div id="spCont"></div>
 </main>
-<footer class="ft">Field guide by Rhys Marsh<div class="ftc">Data: iNaturalist · Photos: CC-licensed · Maps: ESRI + iNat · Ref: Arroyos Foothills Conservancy, CA Bumble Bee Atlas, BumbleBeeWatch, socalbutterflies.com, Essig Museum, UC IPM</div></footer>
+<footer class="ft">Field guide by Rhys Marsh<div class="ftc">Data: iNaturalist · Photos: CC-licensed · Maps: ESRI + iNat · Ref: Arroyos Foothills Conservancy, CA Bumble Bee Atlas, BumbleBeeWatch, socalbutterflies.com, Essig Museum, UC IPM</div><a href="https://github.com/rhysmarsh/LAbugs" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;color:var(--gold);font-family:var(--fb);font-weight:600;text-decoration:none;font-size:0.95rem">Fork this on GitHub →</a></footer>
 <div class="mo hid" id="mOvr"><div class="mm"><div class="mmh"><div><div class="mmt" id="mTit"></div><div class="mms" id="mSub"></div></div><button class="mmc" id="mCl">&times;</button></div><div class="mc" id="mCon"></div><div class="mml"><a id="mLnk" href="#" target="_blank" rel="noopener noreferrer">Open in iNaturalist</a></div></div></div>
 <script>
 const STATUS={"common": {"label": "Common", "color": "#3A9B68", "bg": "#E8F5E9"}, "uncommon": {"label": "Uncommon", "color": "#BFA46E", "bg": "#FFF8E1"}, "rare": {"label": "Rare", "color": "#D4760A", "bg": "#FFF3E0"}, "endangered": {"label": "Endangered", "color": "#C62828", "bg": "#FFEBEE"}, "vagrant": {"label": "Vagrant", "color": "#5C6BC0", "bg": "#E8EAF6"}, "extirpated": {"label": "Extirpated", "color": "#78909C", "bg": "#ECEFF1"}, "historical": {"label": "Historical", "color": "#9E9E9E", "bg": "#F5F5F5"}};
@@ -234,34 +234,42 @@ function saveT(k){state.activeTaxon=k;state.statusFilter=null;state.familyFilter
 
 document.getElementById('sclT').addEventListener('click',()=>{document.getElementById('sclB').classList.toggle('show');});
 
-const NAME_ALIASES={"Tharsalea hermes":"Lycaena hermes","Nymphalis milberti":"Aglais milberti","Tharsalea heteronea":"Lycaena heteronea","Tharsalea helloides":"Lycaena helloides","Heraclides rumiko":"Papilio rumiko","Junonia grisea":"Junonia grisea","Burnsius communis":"Pyrgus communis","Burnsius philetas":"Pyrgus philetas","Burnsius albezens":"Pyrgus albescens","Icaricia acmon":"Plebejus acmon","Icaricia icarioides":"Plebejus icarioides","Icaricia melissa":"Plebejus melissa","Icaricia lupini":"Plebejus lupini","Icaricia neurona":"Plebejus neurona","Tharsalea arota":"Lycaena arota","Tharsalea gorgon":"Lycaena gorgon","Tharsalea xanthoides":"Lycaena xanthoides","Plebulina emigdionis":"Philotiella leona","Coenonympha california":"Coenonympha tullia","Argynnis callippe":"Speyeria callippe","Argynnis coronis":"Speyeria coronis","Argynnis egleis":"Speyeria egleis","Zerene cesonia":"Colias cesonia","Abaeis nicippe":"Eurema nicippe","Cecropterus pylades":"Thorybes pylades","Callophrys nelsoni":"Callophrys gryneus nelsoni","Hesperia colorado leussleri":"Hesperia colorado","Satyrium sylvinus":"Satyrium dryope","Zoraena dorsalis":"Cordulegaster dorsalis","Phanogomphus kurilis":"Gomphus kurilis","Leptarctia californiae":"Platyprepia virginalis","Lycaena hermes":"Tharsalea hermes","Aglais milberti":"Nymphalis milberti","Lycaena heteronea":"Tharsalea heteronea","Lycaena helloides":"Tharsalea helloides","Papilio rumiko":"Heraclides rumiko","Pyrgus communis":"Burnsius communis","Pyrgus philetas":"Burnsius philetas","Pyrgus albescens":"Burnsius albezens","Plebejus acmon":"Icaricia acmon","Plebejus icarioides":"Icaricia icarioides","Plebejus melissa":"Icaricia melissa","Plebejus lupini":"Icaricia lupini","Plebejus neurona":"Icaricia neurona","Lycaena arota":"Tharsalea arota","Lycaena gorgon":"Tharsalea gorgon","Lycaena xanthoides":"Tharsalea xanthoides","Philotiella leona":"Plebulina emigdionis","Coenonympha tullia":"Coenonympha california","Speyeria callippe":"Argynnis callippe","Speyeria coronis":"Argynnis coronis","Speyeria egleis":"Argynnis egleis","Colias cesonia":"Zerene cesonia","Eurema nicippe":"Abaeis nicippe","Thorybes pylades":"Cecropterus pylades","Callophrys gryneus nelsoni":"Callophrys nelsoni","Hesperia colorado":"Hesperia colorado leussleri","Satyrium dryope":"Satyrium sylvinus","Cordulegaster dorsalis":"Zoraena dorsalis","Gomphus kurilis":"Phanogomphus kurilis","Platyprepia virginalis":"Leptarctia californiae"};
+const NAME_ALIASES={"Tharsalea hermes":"Lycaena hermes","Nymphalis milberti":"Aglais milberti","Tharsalea heteronea":"Lycaena heteronea","Tharsalea helloides":"Lycaena helloides","Heraclides rumiko":"Papilio rumiko","Junonia grisea":"Junonia grisea","Burnsius communis":"Pyrgus communis","Burnsius philetas":"Pyrgus philetas","Burnsius albezens":"Pyrgus albescens","Icaricia acmon":"Plebejus acmon","Icaricia icarioides":"Plebejus icarioides","Icaricia melissa":"Plebejus melissa","Icaricia lupini":"Plebejus lupini","Icaricia neurona":"Plebejus neurona","Tharsalea arota":"Lycaena arota","Tharsalea gorgon":"Lycaena gorgon","Tharsalea xanthoides":"Lycaena xanthoides","Plebulina emigdionis":"Philotiella leona","Coenonympha california":"Coenonympha tullia","Argynnis callippe":"Speyeria callippe","Argynnis coronis":"Speyeria coronis","Argynnis egleis":"Speyeria egleis","Zerene cesonia":"Colias cesonia","Abaeis nicippe":"Eurema nicippe","Cecropterus pylades":"Thorybes pylades","Callophrys nelsoni":"Callophrys gryneus nelsoni","Hesperia colorado leussleri":"Hesperia colorado","Satyrium sylvinus":"Satyrium dryope","Zoraena dorsalis":"Cordulegaster dorsalis","Phanogomphus kurilis":"Gomphus kurilis","Leptarctia californiae":"Platyprepia virginalis","Lycaena hermes":"Tharsalea hermes","Aglais milberti":"Nymphalis milberti","Lycaena heteronea":"Tharsalea heteronea","Lycaena helloides":"Tharsalea helloides","Papilio rumiko":"Heraclides rumiko","Pyrgus communis":"Burnsius communis","Pyrgus philetas":"Burnsius philetas","Pyrgus albescens":"Burnsius albezens","Plebejus acmon":"Icaricia acmon","Plebejus icarioides":"Icaricia icarioides","Plebejus melissa":"Icaricia melissa","Plebejus lupini":"Icaricia lupini","Plebejus neurona":"Icaricia neurona","Lycaena arota":"Tharsalea arota","Lycaena gorgon":"Tharsalea gorgon","Lycaena xanthoides":"Tharsalea xanthoides","Philotiella leona":"Plebulina emigdionis","Coenonympha tullia":"Coenonympha california","Speyeria callippe":"Argynnis callippe","Speyeria coronis":"Argynnis coronis","Speyeria egleis":"Argynnis egleis","Colias cesonia":"Zerene cesonia","Eurema nicippe":"Abaeis nicippe","Thorybes pylades":"Cecropterus pylades","Callophrys gryneus nelsoni":"Callophrys nelsoni","Hesperia colorado":"Hesperia colorado leussleri","Satyrium dryope":"Satyrium sylvinus","Cordulegaster dorsalis":"Zoraena dorsalis","Gomphus kurilis":"Phanogomphus kurilis","Platyprepia virginalis":"Leptarctia californiae","Xylocopa californica":"Xylocopa sonorina","Xylocopa sonorina":"Xylocopa californica","Xylocopa californica arizonensis":"Xylocopa sonorina"};
 
 let pq=[],pf=false;
 async function fetchPhoto(sp){if(state.photoCache[sp.sn]&&state.photoCache[sp.sn].url)return;
-const rc=(state.photoCache[sp.sn]&&state.photoCache[sp.sn]._rc)||0;if(rc>=3)return;
+if(state.photoCache[sp.sn]&&state.photoCache[sp.sn]._retry2)return;
 try{let qn=sp.sn,isGenus=qn.includes(' sp.');if(isGenus)qn=qn.replace(/ sp\.?$/,'');
 const parts=qn.split(' ');const isTri=parts.length>=3;
 const alias=NAME_ALIASES[sp.sn]||NAME_ALIASES[qn];
-const queries=alias?[qn,alias]:[qn];
+const bi=isTri?(parts[0]+' '+parts[1]):null;
+const queries=[];
+if(bi)queries.push(bi);
+queries.push(qn);
+if(alias)queries.push(alias);
+if(bi&&alias){const abi=alias.split(' ');if(abi.length>=2)queries.push(abi[0]+' '+abi[1]);}
 let m=null;
 for(const q of queries){if(m)break;
 const r=await fetch(`https://api.inaturalist.org/v1/taxa/autocomplete?q=${encodeURIComponent(q)}&per_page=20`);
 if(r.status===429){await new Promise(r=>setTimeout(r,3000));if(!pq.find(x=>x.sn===sp.sn))pq.push(sp);return;}
 const d=await r.json();const res=d.results||[];
-m=res.find(t=>t.name&&t.name.toLowerCase()===q.toLowerCase());
+const ql=q.toLowerCase();
+m=res.find(t=>t.name&&t.default_photo&&t.name.toLowerCase()===ql);
+if(!m)m=res.find(t=>t.name&&t.name.toLowerCase()===ql);
+if(!m&&isTri&&bi){m=res.find(t=>t.name&&t.name.toLowerCase()===bi.toLowerCase());}
 if(!m&&alias){m=res.find(t=>t.name&&t.name.toLowerCase()===alias.toLowerCase());}
-if(!m&&isTri){const bi=parts[0]+' '+parts[1];m=res.find(t=>t.name&&t.name.toLowerCase()===bi.toLowerCase());}
-if(!m&&isGenus){m=res.find(t=>t.name&&(t.rank==='genus'||t.rank==='subfamily'||t.rank==='family')&&t.default_photo);}
-if(!m){const ep=q.split(' ').pop().toLowerCase();m=res.find(t=>t.default_photo&&t.name&&t.rank==='species'&&t.name.toLowerCase().endsWith(' '+ep));}}
-if(!m&&!isGenus&&parts.length===2){
-const r2=await fetch(`https://api.inaturalist.org/v1/taxa/autocomplete?q=${encodeURIComponent(parts[1])}&per_page=20`);
-if(r2.ok){const d2=await r2.json();m=(d2.results||[]).find(t=>t.name&&t.name.toLowerCase()===qn.toLowerCase());
-if(!m&&alias){m=(d2.results||[]).find(t=>t.name&&t.name.toLowerCase()===alias.toLowerCase());}}}
-if(m){state.resolvedTids[sp.sn]=m.id;const ph=m.default_photo?{url:m.default_photo.medium_url,attr:m.default_photo.attribution}:{url:null,attr:null,_rc:rc+1};state.photoCache[sp.sn]=ph;if(ph.url)idbSet(sp.sn,{url:ph.url,attr:ph.attr,tid:m.id,ts:Date.now()});}
-else{state.photoCache[sp.sn]={url:null,attr:null,_rc:rc+1};}pp(sp);}catch(e){state.photoCache[sp.sn]={url:null,attr:null,_rc:rc+1};}}
+if(!m&&isGenus){m=res.find(t=>t.name&&(t.rank==='genus'||t.rank==='subfamily')&&t.default_photo);}
+if(!m){const ep=parts[parts.length-1].toLowerCase();m=res.find(t=>t.default_photo&&t.name&&t.rank==='species'&&t.name.toLowerCase().endsWith(' '+ep));}}
+if(!m&&sp.cn){
+const r2=await fetch(`https://api.inaturalist.org/v1/taxa/autocomplete?q=${encodeURIComponent(sp.cn)}&per_page=10`);
+if(r2.ok){const d2=await r2.json();const ep=parts[parts.length-1].toLowerCase();
+m=(d2.results||[]).find(t=>t.name&&t.default_photo&&t.name.toLowerCase().endsWith(' '+ep));
+if(!m)m=(d2.results||[]).find(t=>t.name&&t.default_photo&&t.rank==='species');}}
+if(m){state.resolvedTids[sp.sn]=m.id;const ph=m.default_photo?{url:m.default_photo.medium_url,attr:m.default_photo.attribution}:{url:null,attr:null};state.photoCache[sp.sn]=ph;if(ph.url)idbSet(sp.sn,{url:ph.url,attr:ph.attr,tid:m.id,ts:Date.now()});}
+else{state.photoCache[sp.sn]={url:null,attr:null,_retry2:true};}pp(sp);}catch(e){state.photoCache[sp.sn]={url:null,attr:null,_retry2:true};}}
 async function ppq(){if(pf||!pq.length)return;pf=true;
-while(pq.length){const batch=pq.splice(0,2).filter(sp=>!state.photoCache[sp.sn]);
-if(batch.length){await Promise.all(batch.map(sp=>fetchPhoto(sp)));await new Promise(r=>setTimeout(r,500));}}pf=false;rTB();rLL();}
+while(pq.length){const batch=pq.splice(0,3).filter(sp=>{const c=state.photoCache[sp.sn];return !c||(!c.url&&!c._retry2);});
+if(batch.length){await Promise.all(batch.map(sp=>fetchPhoto(sp)));await new Promise(r=>setTimeout(r,350));}}pf=false;rTB();rLL();}
 
 function pp(sp){const c=state.photoCache[sp.sn];if(!c||!c.url)return;document.querySelectorAll(`.sc[data-sid="${sp.id}"]`).forEach(card=>{const p=card.querySelector('.cp');if(p){p.style.background=`url(${c.url}) center/cover no-repeat`;const e=p.querySelector('.ep');if(e)e.remove();}});}
 
@@ -278,11 +286,11 @@ const revAlias={};for(const[k,v]of Object.entries(NAME_ALIASES)){revAlias[v.toLo
 const res={};for(const k of TAXA_ORDER){const cfg=TAXA[k];
 try{const r=await fetch(`https://api.inaturalist.org/v1/observations/species_counts?user_id=${encodeURIComponent(state.inatUsername)}&place_id=${cfg.placeId}&taxon_id=${cfg.iNatTaxonId}&per_page=500`);
 const d=await r.json();const ids=new Set(),names=new Set();
-for(const x of(d.results||[])){if(x.taxon?.id)ids.add(x.taxon.id);if(x.taxon?.ancestor_ids)x.taxon.ancestor_ids.forEach(a=>ids.add(a));if(x.taxon?.name){const n=x.taxon.name.toLowerCase();names.add(n);const p=n.split(' ');if(p.length>=3)names.add(p[0]+' '+p[1]);if(revAlias[n])names.add(revAlias[n]);if(p.length>=2){const bi=p[0]+' '+p[1];if(revAlias[bi])names.add(revAlias[bi]);}}}
+for(const x of(d.results||[])){if(x.taxon?.id)ids.add(x.taxon.id);if(x.taxon?.name){const n=x.taxon.name.toLowerCase();names.add(n);const p=n.split(' ');if(p.length>=3)names.add(p[0]+' '+p[1]);if(revAlias[n])names.add(revAlias[n]);if(p.length>=2){const bi=p[0]+' '+p[1];if(revAlias[bi])names.add(revAlias[bi]);}}}
 res[k]={ids,names};}catch{res[k]={ids:new Set(),names:new Set()};}}
 state.lifeListData=res;state.lifeListLoading=false;render();}
 
-function isO(sp,taxon){const d=state.lifeListData[taxon||state.activeTaxon];if(!d)return false;const r=state.resolvedTids[sp.sn];if(r&&d.ids.has(r))return true;const sn=sp.sn.toLowerCase();if(d.names.has(sn))return true;const alias=NAME_ALIASES[sp.sn];if(alias&&d.names.has(alias.toLowerCase()))return true;const parts=sn.split(' ');if(parts.length>=3&&d.names.has(parts[0]+' '+parts[1]))return true;if(parts.length>=2){for(const n of d.names){const np=n.split(' ');if(np.length>=2&&np[1]===parts[1]&&np[0]!==parts[0])return true;}}return false;}
+function isO(sp,taxon){const d=state.lifeListData[taxon||state.activeTaxon];if(!d)return false;const r=state.resolvedTids[sp.sn];if(r&&d.ids.has(r))return true;const sn=sp.sn.toLowerCase();if(d.names.has(sn))return true;const alias=NAME_ALIASES[sp.sn];if(alias&&d.names.has(alias.toLowerCase()))return true;const parts=sn.split(' ');if(parts.length>=3&&d.names.has(parts[0]+' '+parts[1]))return true;return false;}
 
 function sC(){const c={};for(const k of TAXA_ORDER)c[k]=(SPECIES_DATA[k]||[]).length;return c;}
 function sspC(k){return(SPECIES_DATA[k]||[]).filter(sp=>sp.ssp).length;}

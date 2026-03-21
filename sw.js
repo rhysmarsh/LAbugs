@@ -1,4 +1,4 @@
-const CACHE_NAME = 'la-invertebrate-guide-v2.4';
+const CACHE_NAME = 'la-invertebrate-guide-v2.6';
 const PHOTO_CACHE = 'la-invertebrate-photos-v1';
 const INAT_CACHE = 'la-invertebrate-inat-v1';
 const APP_SHELL = ['/', '/index.html', '/manifest.json',
