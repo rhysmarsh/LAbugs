@@ -285,7 +285,7 @@ ppq();}
 async function fetchLL(){if(!state.inatUsername)return;state.lifeListLoading=true;rLL();
 const revAlias={};for(const[k,v]of Object.entries(NAME_ALIASES)){revAlias[v.toLowerCase()]=k.toLowerCase();revAlias[k.toLowerCase()]=v.toLowerCase();}
 const res={};for(const k of TAXA_ORDER){const cfg=TAXA[k];
-try{const r=await fetch(`https://api.inaturalist.org/v1/observations/species_counts?user_id=${encodeURIComponent(state.inatUsername)}&place_id=${cfg.placeId}&taxon_id=${cfg.iNatTaxonId}&per_page=500`);
+try{const r=await fetch(`https://api.inaturalist.org/v1/observations/species_counts?user_id=${encodeURIComponent(state.inatUsername)}&place_id=${cfg.placeId}&taxon_id=${cfg.iNatTaxonId}&rank=species,subspecies&per_page=500`);
 const d=await r.json();const ids=new Set(),names=new Set();
 for(const x of(d.results||[])){const rk=x.taxon?.rank;if(rk!=='species'&&rk!=='subspecies')continue;if(x.taxon?.id)ids.add(x.taxon.id);if(x.taxon?.name){const n=x.taxon.name.toLowerCase();names.add(n);const p=n.split(' ');if(p.length>=3)names.add(p[0]+' '+p[1]);if(revAlias[n])names.add(revAlias[n]);if(p.length>=2){const bi=p[0]+' '+p[1];if(revAlias[bi])names.add(revAlias[bi]);}}}
 res[k]={ids,names};}catch{res[k]={ids:new Set(),names:new Set()};}}
@@ -427,7 +427,7 @@ ${(()=>{const c=CONSERVATION[sp.sn]||CONSERVATION[sp.sn.split(' ').slice(0,2).jo
 <div class="ds-map" id="dsMap"></div>
 </div>
 <div class="ds-fms">${rFM(sp)}</div>
-<div class="ds-acts"><a class="ds-btn ds-btn-inat" href="${mapUrl}" target="_blank" rel="noopener noreferrer">View on iNaturalist →</a>${state.inatUsername&&tid?`<a class="ds-btn ds-btn-myobs" href="https://www.inaturalist.org/observations?taxon_id=${tid}&user_id=${encodeURIComponent(state.inatUsername)}&place_id=962" target="_blank" rel="noopener noreferrer">My Observations →</a>`:''}</div>
+<div class="ds-acts"><a class="ds-btn ds-btn-inat" href="${mapUrl}" target="_blank" rel="noopener noreferrer">View on iNaturalist →</a>${state.inatUsername&&tid?`<a class="ds-btn ds-btn-myobs" href="https://inaturalist.org/observations?taxon_id=${tid}&user_login=${encodeURIComponent(state.inatUsername)}" target="_blank" rel="noopener noreferrer">My Observations →</a>`:''}</div>
 ${ca&&ca.attr?`<div class="ds-attr">${eH(ca.attr)}</div>`:''}
 </div></div></div>`;
 document.body.insertAdjacentHTML('beforeend',h);
