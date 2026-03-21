@@ -1,0 +1,101 @@
+{
+"wasps": [
+  {"id":"nw72","cn":"Western Yellowjacket","sn":"Vespula pensylvanica","fam":"Vespidae","st":"common","desc":"Aggressive ground-nesting yellowjacket. Most common nuisance wasp at outdoor food."},
+  {"id":"nw73","cn":"Giant Ichneumon","sn":"Megarhyssa macrurus","fam":"Ichneumonidae","st":"uncommon","desc":"Female has ovipositor longer than body — drills through wood to parasitize horntail larvae."},
+  {"id":"nw74","cn":"Sand Wasp","sn":"Bembix americana","fam":"Crabronidae","st":"uncommon","desc":"Fast-flying wasp that digs burrows in sand. Provisions nest with flies for larvae."},
+  {"id":"nw75","cn":"Blue-winged Wasp","sn":"Scolia dubia","fam":"Scoliidae","st":"uncommon","desc":"Black wasp with blue wings and orange abdominal spots. Parasitizes Japanese beetle grubs."},
+  {"id":"nw76","cn":"Pigeon Tremex","sn":"Tremex columba","fam":"Siricidae","st":"uncommon","desc":"Large wood wasp (sawfly). Female drills into hardwoods to lay eggs. Hosts giant ichneumons."},
+  {"id":"nw77","cn":"Four-toothed Mason Wasp","sn":"Monobia quadridens","fam":"Vespidae","st":"uncommon","desc":"Solitary black and white wasp. Nests in old carpenter bee galleries. Provisions with caterpillars."},
+  {"id":"nw78","cn":"Metric Paper Wasp","sn":"Polistes metricus","fam":"Vespidae","st":"uncommon","desc":"Brown paper wasp. Builds small open-face nests under eaves. Less aggressive than yellowjackets."},
+  {"id":"nw79","cn":"Steel-blue Cricket Hunter","sn":"Chlorion aerarium","fam":"Sphecidae","st":"uncommon","desc":"Metallic blue wasp that hunts crickets. Stings and paralyzes prey, drags to burrow."},
+  {"id":"nw80","cn":"Red Imported Fire Ant","sn":"Solenopsis invicta","fam":"Formicidae","st":"common","intro":true,"desc":"Aggressive invasive ant with painful sting. Mound-building. Spreading through SoCal."},
+  {"id":"nw81","cn":"Odorous House Ant","sn":"Tapinoma sessile","fam":"Formicidae","st":"common","desc":"Tiny dark ant smelling of coconut when crushed. Most common indoor ant pest."},
+  {"id":"nw82","cn":"Velvet Tree Ant","sn":"Liometopum occidentale","fam":"Formicidae","st":"common","desc":"Dark ant nesting in dead wood and tree cavities. Produces formic acid. Forms long trails."},
+  {"id":"nw83","cn":"Velvety Tree Ant","sn":"Liometopum luctuosum","fam":"Formicidae","st":"uncommon","desc":"Close relative of L. occidentale. Found in mountain areas on oaks and conifers."}
+],
+"trueBugs": [
+  {"id":"ntb44","cn":"Say's Stink Bug","sn":"Chlorochroa sayi","fam":"Pentatomidae","st":"common","desc":"Bright green shield bug. Found on many plants. Emits pungent defensive odor."},
+  {"id":"ntb45","cn":"Conchuela Bug","sn":"Chlorochroa ligata","fam":"Pentatomidae","st":"common","desc":"Dark brown stink bug with orange/red border. Agricultural pest of beans and tomatoes."},
+  {"id":"ntb46","cn":"Western Boxelder Bug","sn":"Boisea rubrolineata","fam":"Rhopalidae","st":"common","desc":"Black and red scentless plant bug. Aggregates on sun-warmed walls in fall. On boxelder maples."},
+  {"id":"ntb47","cn":"Lace Bug","sn":"Corythucha sp.","fam":"Tingidae","st":"common","desc":"Tiny bug with lace-like transparent wings. Sucks sap from leaf undersides. Many host-specific species."},
+  {"id":"ntb48","cn":"Minute Pirate Bug","sn":"Orius insidiosus","fam":"Anthocoridae","st":"common","desc":"Tiny predator — eats thrips, mites, aphid eggs. Important biocontrol agent. Can bite humans."},
+  {"id":"ntb49","cn":"Western Tarnished Plant Bug","sn":"Lygus hesperus","fam":"Miridae","st":"common","desc":"Green-brown plant bug. Major agricultural pest of strawberries, cotton, alfalfa."},
+  {"id":"ntb50","cn":"Stilt Bug","sn":"Jalysus wickhami","fam":"Berytidae","st":"uncommon","desc":"Delicate long-legged bug on vegetation. Predatory — feeds on small insects and eggs."},
+  {"id":"ntb51","cn":"Giant Water Bug","sn":"Lethocerus americanus","fam":"Belostomatidae","st":"uncommon","desc":"Large aquatic predator to 60mm. Ambushes fish and frogs. Painful bite. 'Toe-biter.' Attracted to lights."},
+  {"id":"ntb52","cn":"Water Strider","sn":"Gerris remigis","fam":"Gerridae","st":"common","desc":"Skates on water surface film using hydrophobic leg hairs. Detects ripples from trapped insects."},
+  {"id":"ntb53","cn":"Milkweed Bug","sn":"Oncopeltus fasciatus","fam":"Lygaeidae","st":"common","desc":"Orange and black seed bug on milkweed. Sequesters cardiac glycosides. Model organism in biology."},
+  {"id":"ntb54","cn":"Bordered Plant Bug","sn":"Largus californicus","fam":"Largidae","st":"common","desc":"Dark blue-black bug with orange border. Nymphs bright red-purple. On various plants."},
+  {"id":"ntb55","cn":"Creosote Bush Grasshopper","sn":"Bootettix argentatus","fam":"Acrididae","st":"uncommon","desc":"Actually a true bug mimic. Tiny cryptic planthopper perfectly matching creosote leaves."}
+],
+"flies": [
+  {"id":"nf36","cn":"Valley Carpenter Bee Fly","sn":"Xenox tigrinus","fam":"Bombyliidae","st":"uncommon","desc":"Large bee fly that parasitizes carpenter bees. Flicks eggs into bee nests."},
+  {"id":"nf37","cn":"Mydas Fly","sn":"Mydas clavatus","fam":"Mydidae","st":"uncommon","desc":"Very large black and orange fly mimicking spider wasps. Larvae predatory in soil."},
+  {"id":"nf38","cn":"Picture-winged Fly","sn":"Delphinia picta","fam":"Ulidiidae","st":"common","desc":"Small fly with ornate wing patterns. Displays wings in courtship dances on leaves."},
+  {"id":"nf39","cn":"Cactus Fly","sn":"Copestylum mexicanum","fam":"Syrphidae","st":"uncommon","desc":"Large hover fly whose larvae develop in rotting cactus. Bee mimic. Technically a hoverfly."},
+  {"id":"nf40","cn":"Dark-winged Fungus Gnat","sn":"Bradysia sp.","fam":"Sciaridae","st":"common","desc":"Tiny black fly in houseplant soil. Larvae feed on fungus and roots. Common indoor nuisance."},
+  {"id":"nf41","cn":"Moth Fly","sn":"Clogmia albipunctata","fam":"Psychodidae","st":"common","intro":true,"desc":"Fuzzy moth-like fly in bathrooms and drains. Larvae develop in organic films in pipes."},
+  {"id":"nf42","cn":"Mediterranean Fruit Fly","sn":"Ceratitis capitata","fam":"Tephritidae","st":"rare","intro":true,"desc":"Major quarantine pest of fruit. Periodic detections trigger aerial spraying in LA."},
+  {"id":"nf43","cn":"Soldier Fly","sn":"Hermetia illucens","fam":"Stratiomyidae","st":"common","desc":"Black soldier fly — larvae efficiently convert organic waste. Used in composting and animal feed."},
+  {"id":"nf44","cn":"Stiletto Fly","sn":"Thereva sp.","fam":"Therevidae","st":"uncommon","desc":"Predatory fly of sandy habitats. Larvae hunt soil-dwelling insect larvae. Covered in golden hairs."},
+  {"id":"nf45","cn":"Blow Fly","sn":"Lucilia sericata","fam":"Calliphoridae","st":"common","desc":"Metallic green bottle fly. Important in forensic entomology. Larvae used in medical maggot therapy."},
+  {"id":"nf46","cn":"Cluster Fly","sn":"Pollenia rudis","fam":"Calliphoridae","st":"common","intro":true,"desc":"Gray fly that overwinters in buildings in clusters. Larvae are earthworm parasites."},
+  {"id":"nf47","cn":"Stable Fly","sn":"Stomoxys calcitrans","fam":"Muscidae","st":"common","desc":"Blood-feeding fly that bites livestock and humans. Breeds in decaying vegetation, not manure."}
+],
+"hoverflies": [
+  {"id":"nh25","cn":"Margined Calligrapher","sn":"Toxomerus marginatus","fam":"Syrphidae","st":"common","desc":"Tiny hoverfly with yellow and black abdomen. Larvae eat aphids. One of most common garden hoverflies."},
+  {"id":"nh26","cn":"Transverse Flower Fly","sn":"Eristalis transversa","fam":"Syrphidae","st":"common","desc":"Large bee-mimicking hoverfly. Rat-tailed maggot larvae in stagnant water."},
+  {"id":"nh27","cn":"Bare-eyed Drone Fly","sn":"Eristalis arbustorum","fam":"Syrphidae","st":"common","intro":true,"desc":"European hoverfly now common in NA. Honeybee mimic. Larvae in polluted water."},
+  {"id":"nh28","cn":"Narrow-headed Marsh Fly","sn":"Helophilus fasciatus","fam":"Syrphidae","st":"uncommon","desc":"Yellow and black banded hoverfly near wetlands. Rat-tailed larvae in muddy water."},
+  {"id":"nh29","cn":"American Hover Fly","sn":"Eupeodes americanus","fam":"Syrphidae","st":"common","desc":"Small dark hoverfly with yellow lunules on abdomen. Larvae are voracious aphid predators."},
+  {"id":"nh30","cn":"Oblique Streaktail","sn":"Allograpta obliqua","fam":"Syrphidae","st":"common","desc":"Slender hoverfly with oblique yellow markings. Excellent aphid biocontrol. Hovers at flowers."}
+],
+"nativeBees": [
+  {"id":"nnb36","cn":"Blue Orchard Bee","sn":"Osmia lignaria","fam":"Megachilidae","st":"common","desc":"Metallic blue mason bee. Excellent fruit pollinator — more efficient than honeybees per bee. Nests in tubes."},
+  {"id":"nnb37","cn":"Leafcutter Bee","sn":"Megachile rotundata","fam":"Megachilidae","st":"common","intro":true,"desc":"Small gray bee that cuts circular leaf pieces to line nest cells. Important alfalfa pollinator."},
+  {"id":"nnb38","cn":"Mining Bee","sn":"Andrena sp.","fam":"Andrenidae","st":"common","desc":"Diverse genus of ground-nesting bees. Many species active in early spring. Important native pollinators."},
+  {"id":"nnb39","cn":"Cactus Bee","sn":"Diadasia rinconis","fam":"Apidae","st":"uncommon","desc":"Specialist bee of prickly pear cactus. Ground-nesting. Covered in pale hairs."},
+  {"id":"nnb40","cn":"Squash Bee","sn":"Peponapis pruinosa","fam":"Apidae","st":"common","desc":"Specialist of cucurbit flowers. Active before dawn when squash blooms open. Ground-nesting."},
+  {"id":"nnb41","cn":"Resin Bee","sn":"Megachile campanulae","fam":"Megachilidae","st":"uncommon","desc":"Uses plant resins instead of leaf pieces to build nest. Cavity nester in wood and stems."},
+  {"id":"nnb42","cn":"Wool Carder Bee","sn":"Anthidium manicatum","fam":"Megachilidae","st":"common","intro":true,"desc":"European bee that scrapes plant hairs for nest. Males territorial — ram other bees in flight."},
+  {"id":"nnb43","cn":"Longhorn Bee","sn":"Melissodes tepaneca","fam":"Apidae","st":"common","desc":"Males have extremely long antennae. Fast-flying. Ground-nesting. Important sunflower pollinator."},
+  {"id":"nnb44","cn":"Green Metallic Bee","sn":"Agapostemon texanus","fam":"Halictidae","st":"common","desc":"Brilliant metallic green bee. Females iridescent all over; males green head with striped abdomen."},
+  {"id":"nnb45","cn":"Pure Green Sweat Bee","sn":"Augochlora pura","fam":"Halictidae","st":"uncommon","desc":"Small brilliant green bee nesting in rotting wood — unusual for a sweat bee. Solitary."}
+],
+"orthoptera": [
+  {"id":"no29","cn":"Devastating Grasshopper","sn":"Melanoplus devastator","fam":"Acrididae","st":"common","desc":"Most abundant grasshopper in California grasslands. Periodic outbreaks cause crop damage."},
+  {"id":"no30","cn":"Migratory Grasshopper","sn":"Melanoplus sanguinipes","fam":"Acrididae","st":"common","desc":"Major crop pest across western NA. Can form loose swarms during outbreaks. Brown with red hind tibiae."},
+  {"id":"no31","cn":"Obscure Bird Grasshopper","sn":"Schistocerca obscura","fam":"Acrididae","st":"uncommon","desc":"Large green grasshopper to 60mm. Related to desert locust. Feeds on many plants."},
+  {"id":"no32","cn":"Green Bird Grasshopper","sn":"Schistocerca shoshone","fam":"Acrididae","st":"uncommon","desc":"Large bright green grasshopper of desert margins. Strong flier. On creosote and mesquite."},
+  {"id":"no33","cn":"Rainbow Grasshopper","sn":"Dactylotum bicolor","fam":"Acrididae","st":"rare","desc":"Spectacular black, red, yellow, and blue grasshopper. Flightless — relies on warning coloration. Desert margins."},
+  {"id":"no34","cn":"Arroyo Toad Cricket","sn":"Ceuthophilus sp.","fam":"Rhaphidophoridae","st":"common","desc":"Humpbacked cave/camel cricket. Nocturnal. Found in garages, basements, under rocks."},
+  {"id":"no35","cn":"Fork-tailed Bush Katydid","sn":"Scudderia furcata","fam":"Tettigoniidae","st":"common","desc":"Green katydid with long wings. Males stridulate at night. On shrubs and garden plants."},
+  {"id":"no36","cn":"European Earwig","sn":"Forficula auricularia","fam":"Forficulidae","st":"common","intro":true,"desc":"Common garden earwig with rear pincers. Nocturnal omnivore. Female guards eggs — rare maternal care in insects."}
+],
+"snails": [
+  {"id":"ns16","cn":"Milk Snail","sn":"Otala lactea","fam":"Helicidae","st":"common","intro":true,"desc":"Large white snail from Mediterranean. Established in disturbed coastal areas. Edible species."},
+  {"id":"ns17","cn":"Asian Tramp Snail","sn":"Bradybaena similaris","fam":"Camaenidae","st":"common","intro":true,"desc":"Small brown snail with dark spiral band. Garden pest. Introduced from East Asia."},
+  {"id":"ns18","cn":"Banded Snail","sn":"Cepaea nemoralis","fam":"Helicidae","st":"uncommon","intro":true,"desc":"Variable shell color and banding. Classic subject of evolutionary studies on natural selection."},
+  {"id":"ns19","cn":"Glass Snail","sn":"Oxychilus sp.","fam":"Oxychilidae","st":"common","intro":true,"desc":"Translucent flattened snail. Predatory — eats other snails and slugs. Under wood and leaf litter."},
+  {"id":"ns20","cn":"California Shoulderband","sn":"Helminthoglypta tudiculata","fam":"Helminthoglyptidae","st":"uncommon","desc":"Native land snail with keeled shell. Found in coastal scrub and chaparral. Declining."},
+  {"id":"ns21","cn":"Leopard Slug","sn":"Limax maximus","fam":"Limacidae","st":"common","intro":true,"desc":"Large spotted slug to 15cm. Spectacular aerial mating — pair hangs from mucus thread. Introduced."},
+  {"id":"ns22","cn":"Greenhouse Slug","sn":"Milax gagates","fam":"Milacidae","st":"common","intro":true,"desc":"Dark keeled slug. Underground feeder damaging roots and tubers. Serious garden pest."}
+],
+"myriapods": [
+  {"id":"nm13","cn":"Desert Centipede","sn":"Scolopendra polymorpha","fam":"Scolopendridae","st":"common","desc":"Variable colored centipede to 15cm. Under rocks in dry habitats. Venomous bite — painful but not dangerous."},
+  {"id":"nm14","cn":"House Centipede","sn":"Scutigera coleoptrata","fam":"Scutigeridae","st":"common","intro":true,"desc":"Fast-running centipede with extremely long legs. Beneficial predator indoors. Eats spiders and roaches."},
+  {"id":"nm15","cn":"Greenhouse Millipede","sn":"Oxidus gracilis","fam":"Paradoxosomatidae","st":"common","intro":true,"desc":"Small dark millipede common in gardens and greenhouses. Feeds on decaying plant matter."},
+  {"id":"nm16","cn":"North American Millipede","sn":"Narceus americanus","fam":"Spirobolidae","st":"uncommon","desc":"Large dark millipede to 10cm. Curls into spiral when disturbed. Detritivore in leaf litter."}
+],
+"isopods": [
+  {"id":"ni11","cn":"Sea Slater","sn":"Ligia occidentalis","fam":"Ligiidae","st":"common","desc":"Large fast isopod of rocky seashores. Runs when disturbed. Feeds on algae and detritus."},
+  {"id":"ni12","cn":"Common Woodlouse","sn":"Oniscus asellus","fam":"Oniscidae","st":"common","intro":true,"desc":"Gray oval isopod under logs and stones. Cannot roll into ball (unlike pillbugs). European introduction."},
+  {"id":"ni13","cn":"Striped Woodlouse","sn":"Philoscia muscorum","fam":"Philosciidae","st":"common","intro":true,"desc":"Fast-running woodlouse with dark dorsal stripe. In leaf litter and compost. European."},
+  {"id":"ni14","cn":"Sand Flea","sn":"Megalorchestia californiana","fam":"Talitridae","st":"common","desc":"Large beach hopper to 25mm. Burrows in sand above tide line. Emerges at night to feed on kelp wrack."}
+],
+"dragonflies": [
+  {"id":"nd65","cn":"Paddle-tailed Darner","sn":"Aeshna palmata","fam":"Aeshnidae","st":"uncommon","desc":"Large blue darner with paddle-shaped cerci. Mountain lakes and ponds. Powerful flier."},
+  {"id":"nd66","cn":"California Spreadwing","sn":"Archilestes californica","fam":"Lestidae","st":"uncommon","desc":"Large damselfly endemic to California. Oviposits into willow bark over streams."},
+  {"id":"nd67","cn":"Western Pondhawk","sn":"Erythemis collocata","fam":"Libellulidae","st":"common","desc":"Males powder-blue, females green. Aggressive pond dragonfly that hunts other odonates."},
+  {"id":"nd68","cn":"Pale-faced Clubskimmer","sn":"Brechmorhoga mendax","fam":"Libellulidae","st":"uncommon","desc":"River specialist with pale face. Strong fast flight over rocky streams. Rarely perches."}
+]
+}

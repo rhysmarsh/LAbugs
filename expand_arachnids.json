@@ -1,0 +1,22 @@
+[
+  {"id":"na54","cn":"Bold Jumping Spider","sn":"Phidippus audax","fam":"Salticidae","st":"common","intro":true,"desc":"Large black jumping spider with green chelicerae and white spots. Common garden predator."},
+  {"id":"na55","cn":"Apache Jumping Spider","sn":"Phidippus apacheanus","fam":"Salticidae","st":"uncommon","desc":"Bright orange-red jumping spider. Males with striking display. In chaparral and scrub."},
+  {"id":"na56","cn":"Paradise Spider","sn":"Habronattus pyrrithrix","fam":"Salticidae","st":"uncommon","desc":"Tiny colorful jumping spider — male performs elaborate courtship dance. Red face and green legs."},
+  {"id":"na57","cn":"Colonus Jumping Spider","sn":"Colonus hesperus","fam":"Salticidae","st":"common","desc":"Small dark jumping spider on tree trunks and fences. Common in urban areas."},
+  {"id":"na58","cn":"Long-jawed Orb Weaver","sn":"Tetragnatha laboriosa","fam":"Tetragnathidae","st":"common","desc":"Elongated spider with huge chelicerae. Builds orb webs near water. Males and females lock jaws during mating."},
+  {"id":"na59","cn":"Silver Garden Spider","sn":"Argiope argentata","fam":"Araneidae","st":"uncommon","desc":"Striking silver and brown orbweaver with lobate web decorations (stabilimenta)."},
+  {"id":"na60","cn":"Triangulate Cobweb Spider","sn":"Steatoda triangulosa","fam":"Theridiidae","st":"common","intro":true,"desc":"Small cobweb spider with distinctive zigzag pattern. Common indoors. Preys on other spiders."},
+  {"id":"na61","cn":"Spiny Orb Weaver","sn":"Micrathena gracilis","fam":"Araneidae","st":"rare","desc":"Bizarre spider with abdominal spines. Small orb web in woodland understory."},
+  {"id":"na62","cn":"Lynx Spider","sn":"Oxyopes scalaris","fam":"Oxyopidae","st":"common","desc":"Green spider that hunts on vegetation. Does not build web. Ambushes prey with excellent vision."},
+  {"id":"na63","cn":"Thick-jawed Orbweaver","sn":"Pachygnatha sp.","fam":"Tetragnathidae","st":"uncommon","desc":"Small ground-dwelling orbweaver relative. Found in leaf litter near streams."},
+  {"id":"na64","cn":"Running Crab Spider","sn":"Thanatus sp.","fam":"Philodromidae","st":"uncommon","desc":"Fast, flat spider that hunts actively on ground and bark. Does not build webs."},
+  {"id":"na65","cn":"Pirate Spider","sn":"Mimetus sp.","fam":"Mimetidae","st":"uncommon","desc":"Specialized predator of other spiders. Invades webs and plucks silk to lure prey."},
+  {"id":"na66","cn":"Banded Garden Spider","sn":"Argiope trifasciata","fam":"Araneidae","st":"common","desc":"Orb weaver with silver, yellow, and black banded pattern. Large webs in gardens and fields."},
+  {"id":"na67","cn":"Western Spotted Orbweaver","sn":"Neoscona oaxacensis","fam":"Araneidae","st":"common","desc":"Variable brown orbweaver. Builds new web nightly. Most common large orbweaver in LA."},
+  {"id":"na68","cn":"Desert Blonde Tarantula","sn":"Aphonopelma chalcodes","fam":"Theraphosidae","st":"rare","desc":"Golden-blonde tarantula of desert margins. Males wander in fall seeking mates."},
+  {"id":"na69","cn":"Woodlouse Spider","sn":"Dysdera crocata","fam":"Dysderidae","st":"common","intro":true,"desc":"Reddish spider with massive chelicerae specialized for piercing isopod armor. Under rocks and pots."},
+  {"id":"na70","cn":"Grass Spider","sn":"Agelenopsis aperta","fam":"Agelenidae","st":"common","desc":"Builds sheet webs with funnel retreat in grass and low vegetation. Very fast. Venom studied for neuroscience."},
+  {"id":"na71","cn":"Spitting Spider","sn":"Scytodes thoracica","fam":"Scytodidae","st":"uncommon","intro":true,"desc":"Slow spider that spits sticky venomous silk to immobilize prey from a distance. Six eyes."},
+  {"id":"na72","cn":"Desert Hairy Scorpion","sn":"Hadrurus arizonensis","fam":"Hadruridae","st":"rare","desc":"Largest scorpion in NA — to 15cm. Yellow-green with dark back. Desert margins of LA County."},
+  {"id":"na73","cn":"Giant Vinegaroon","sn":"Mastigoproctus giganteus","fam":"Thelyphonidae","st":"rare","desc":"Whip scorpion that sprays acetic acid (vinegar). Nocturnal desert predator. Harmless to humans."}
+]

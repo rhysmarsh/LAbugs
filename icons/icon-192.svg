@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="38" fill="#1A3C35"/>
+  <text x="96" y="88" text-anchor="middle" font-size="64" fill="#BFA46E">🦋</text>
+  <text x="96" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#BFA46E">LA County</text>
+  <text x="96" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#BFA46E" opacity="0.7">Field Guide</text>
+</svg>
