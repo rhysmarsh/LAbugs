@@ -170,7 +170,7 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 <meta name="twitter:description" content="Free open-source field guide to 1,000+ invertebrate species of LA County. Photos, field marks, seasonality, maps.">
 </head>
 <body>
-<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v2.015</span></h1><p class="sub" id="hSub">1,016 species + 5 subspecies across 15 taxa groups<br>For informational purposes only — not a substitute for expert identification</p></header>
+<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v2.015</span></h1><p class="sub" id="hSub">1,016 species + 5 subspecies across 15 taxa groups</p></header>
 <nav class="tbar" id="tBar"></nav>
 <main class="cnt">
 <div class="llb" id="llBar"></div>
@@ -303,7 +303,7 @@ function sspC(k){return(SPECIES_DATA[k]||[]).filter(sp=>sp.ssp).length;}
 function lC(){const c={};for(const k of TAXA_ORDER){const d=state.lifeListData[k];if(!d){c[k]=0;continue;}let n=0;for(const sp of(SPECIES_DATA[k]||[])){if(sp.ssp)continue;if(isO(sp,k))n++;}c[k]=n;}return c;}
 
 function fmtN(n){return n.toLocaleString();}
-function rSub(){const t=TAXA_ORDER.reduce((a,k)=>a+(SPECIES_DATA[k]||[]).length,0);const ssp=TAXA_ORDER.reduce((a,k)=>a+sspC(k),0);document.getElementById('hSub').innerHTML=ssp>0?`${fmtN(t-ssp)} species + ${ssp} subspecies across ${TAXA_ORDER.length} taxa groups<br>For informational purposes only \u2014 not a substitute for expert identification`:`${fmtN(t)} species across ${TAXA_ORDER.length} taxa groups<br>For informational purposes only \u2014 not a substitute for expert identification`;}
+function rSub(){const t=TAXA_ORDER.reduce((a,k)=>a+(SPECIES_DATA[k]||[]).length,0);const ssp=TAXA_ORDER.reduce((a,k)=>a+sspC(k),0);document.getElementById('hSub').textContent=ssp>0?`${fmtN(t-ssp)} species + ${ssp} subspecies across ${TAXA_ORDER.length} taxa groups`:`${fmtN(t)} species across ${TAXA_ORDER.length} taxa groups`;}
 
 function rTB(){const bar=document.getElementById('tBar'),sc=sC(),lc=lC();
 const hasOF=!!state.observedFilter;
@@ -431,6 +431,7 @@ return '<div class="ds-hp"><div class="ds-hp-label">Host Plants / Larval Food</d
 function rFM(sp){if(!sp.fm)return '';let h='';for(const[l,v]of Object.entries(sp.fm))h+=`<div class="ds-fmr"><span class="ds-fml">${l}</span><span class="ds-fmv">${v}</span></div>`;return h;}
 
 function openDS(sp){
+state.dsSpecies=sp;
 if(!state.photoCache[sp.sn]||!state.photoCache[sp.sn].url){
 delete state.photoCache[sp.sn];
 pq.unshift(sp);ppq().then(()=>{const ca2=state.photoCache[sp.sn];if(ca2&&ca2.url){const ph=document.querySelector('.ds-photo');if(ph){ph.style.background=`url(${ca2.url}) center/cover no-repeat`;const ep=ph.querySelector('.ds-ep');if(ep)ep.remove();}const at=document.querySelector('.ds-attr');if(at&&ca2.attr)at.textContent=ca2.attr;}});}
@@ -481,7 +482,7 @@ sheet.addEventListener('touchstart',e=>{sy=e.touches[0].clientY;},{passive:true}
 sheet.addEventListener('touchmove',e=>{if(sy!==null&&sheet.scrollTop<=0){const dy=e.touches[0].clientY-sy;if(dy>60){closeDS();sy=null;}}},{passive:true});
 sheet.addEventListener('touchend',()=>{sy=null;},{passive:true});}
 
-function closeDS(){if(state.dsMap){state.dsMap.remove();state.dsMap=null;}const o=document.getElementById('dsOvr');if(o)o.remove();}
+function closeDS(){if(state.dsMap){state.dsMap.remove();state.dsMap=null;}const o=document.getElementById('dsOvr');if(o)o.remove();if(state.dsSpecies){pp(state.dsSpecies);state.dsSpecies=null;}}
 
 function aL(){
 document.querySelectorAll('.sc[data-sid]').forEach(t=>t.addEventListener('click',()=>{const sp=(SPECIES_DATA[state.activeTaxon]||[]).find(s=>s.id===t.dataset.sid);if(sp)openDS(sp);}));}
