@@ -1,7 +1,7 @@
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-/sw.js
-  Cache-Control: no-cache
-/index.html
-  Cache-Control: no-cache, no-store, must-revalidate
+/data/*.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+/*.js
+  Content-Type: application/javascript
+/*.json
+  Content-Type: application/json
