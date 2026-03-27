@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="LA Invertebrates">
+<meta name="apple-mobile-web-app-title" content="LA Bugs">
 <meta name="theme-color" content="#1A3C35">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/app-icon-180x180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/app-icon-192x192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/app-icon-192x192.png">
-<title>LA County Invertebrate Field Guide — v3.023</title>
+<title>LA County Invertebrate Field Guide — v3.024</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,8 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 .hdr::after{content:'';position:absolute;top:-30%;right:-10%;width:200px;height:200px;background:radial-gradient(circle,rgba(191,164,110,0.08),transparent 70%);border-radius:50%;pointer-events:none}
 .hdr h1{font-family:var(--fd);font-size:22px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;position:relative}
 .hdr .sub{font-size:12px;margin-top:4px;opacity:0.55;font-weight:500;position:relative}
-.tbar{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:2px solid #e8e0d4;background:#FDFBF7;position:sticky;position:-webkit-sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+.tbar{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:2px solid #e8e0d4;background:#FDFBF7;position:sticky;position:-webkit-sticky;top:var(--safe-top);z-index:50}
+.notch-bg{position:fixed;top:0;left:0;right:0;height:var(--safe-top);background:var(--cream);z-index:49;pointer-events:none}
 .tbar::-webkit-scrollbar{display:none}
 .ttab{flex:1 0 auto;min-width:52px;padding:8px 6px 6px;background:none;border:none;border-bottom:3px solid transparent;display:flex;flex-direction:column;align-items:center;gap:1px;opacity:0.42;transition:all 0.25s}
 .ttab.active{opacity:1;border-bottom-color:var(--forest)}.ttab .em{font-size:18px;line-height:1.1}
@@ -187,12 +188,12 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://labugs.org/icons/app-icon-512x512.png">
 <link rel="canonical" href="https://labugs.org/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LA County Invertebrate Field Guide","url":"https://labugs.org","description":"Free PWA field guide to 3,439+ invertebrate species of Los Angeles County","applicationCategory":"ReferenceApplication","operatingSystem":"Any","softwareVersion":"v3.023","author":{"@type":"Organization","name":"labugs.org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LA County Invertebrate Field Guide","url":"https://labugs.org","description":"Free PWA field guide to 3,438+ invertebrate species of Los Angeles County","applicationCategory":"ReferenceApplication","operatingSystem":"Any","softwareVersion":"v3.024","author":{"@type":"Organization","name":"labugs.org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
-<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.023</span></h1><p class="sub" id="hSub">3,434 species + 5 subspecies across 15 taxa groups</p></header>
+<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.024</span></h1><p class="sub" id="hSub">3,434 species + 5 subspecies across 15 taxa groups</p></header>
 <div id="loadProg" style="display:none;text-align:center;padding:20px 16px;font-family:var(--fb);font-size:14px;color:var(--gold);background:var(--cream)"></div>
-<nav class="tbar" id="tBar"></nav>
+<div class="notch-bg"></div><nav class="tbar" id="tBar"></nav>
 <main class="cnt">
 <div class="llb" id="llBar"></div>
 <input class="si" id="sInp" type="text" placeholder="Search all species...">
@@ -416,7 +417,7 @@ const otherMatches=[];
 for(const k of TAXA_ORDER){if(k===state.activeTaxon)continue;
 const matches=(SPECIES_DATA[k]||[]).filter(s=>s.cn.toLowerCase().includes(q)||s.sn.toLowerCase().includes(q));
 if(matches.length)otherMatches.push({taxon:k,count:matches.length,emoji:TAXA[k].emoji,label:TAXA[k].label});}
-if(otherMatches.length){xtrHtml=`<div class="xtr">Also found in: ${otherMatches.map(m=>`<button onclick="saveT('${m.taxon}');render()" style="background:none;border:none;color:var(--forest);font-weight:600;text-decoration:underline;cursor:pointer;font-size:11px">${m.emoji} ${m.label} (${m.count})</button>`).join(' · ')}</div>`;}}
+if(otherMatches.length){xtrHtml=`<div class="xtr">Also found in: ${otherMatches.map(m=>`<button onclick="state.activeTaxon='${m.taxon}';try{location.hash='${m.taxon}'}catch(e){};render()" style="background:none;border:none;color:var(--forest);font-weight:600;text-decoration:underline;cursor:pointer;font-size:11px">${m.emoji} ${m.label} (${m.count})</button>`).join(' · ')}</div>`;}}
 if(!list.length&&!xtrHtml){cont.innerHTML=`<div class="es">No species match your filters.</div>`;return;}
 if(!list.length&&xtrHtml){cont.innerHTML=xtrHtml+`<div class="es">No matches in ${TAXA[state.activeTaxon].label}.</div>`;return;}
 const tc=TAXA[state.activeTaxon],groups={};
@@ -553,7 +554,7 @@ loadState();
 hydrateCache().catch(()=>{});
 
 
-/* === v3.023 Data Loader === */
+/* === v3.024 Data Loader === */
 const DATA_GROUPS=TAXA_ORDER;
 let _dataLoaded=0,_dataTotal=DATA_GROUPS.length;
 
