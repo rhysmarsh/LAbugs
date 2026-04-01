@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="icons/app-icon-180x180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/app-icon-192x192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/app-icon-192x192.png">
-<title>LA County Invertebrate Field Guide — v3.027</title>
+<title>LA County Invertebrate Field Guide — v3.028</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 .cb{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;z-index:2;pointer-events:none}
 .ccn{font-family:var(--fd);font-size:14px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,0.7)}
 .csn{font-family:var(--fd);font-size:11px;font-style:italic;color:rgba(255,255,255,0.82);line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,0.6)}
-.badge-col{position:absolute;top:5px;left:5px;z-index:3;display:flex;flex-direction:column;gap:2px;align-items:flex-start;pointer-events:none}.inv-pill{font-size:9px;font-weight:700;background:#C62828;color:#fff;padding:1px 5px;border-radius:3px;font-family:var(--fb);font-style:normal}.intro-pill{font-size:9px;font-weight:700;background:#E65100;color:#fff;padding:1px 5px;border-radius:3px;font-family:var(--fb);font-style:normal}
+.badge-col{position:absolute;top:5px;left:5px;z-index:3;display:flex;flex-direction:column;gap:4px;align-items:flex-start;pointer-events:none}.inv-pill{font-size:8px;font-weight:700;background:#C62828;color:#fff;padding:1px 4px;border-radius:3px;font-family:var(--fb);font-style:normal}.intro-pill{font-size:9px;font-weight:700;background:#E65100;color:#fff;padding:1px 5px;border-radius:3px;font-family:var(--fb);font-style:normal}
 .sb,.cd,.ca,.ctr,.pa{display:none}
 /* Species detail sheet */
 .ds-xl{margin:12px 0;padding:10px 12px;background:#f8faf8;border-radius:8px;border:1px solid #e0ebe0}
@@ -189,10 +189,10 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://labugs.org/icons/app-icon-512x512.png">
 <link rel="canonical" href="https://labugs.org/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LA County Invertebrate Field Guide","url":"https://labugs.org","description":"Free PWA field guide to 3,438+ invertebrate species of Los Angeles County","applicationCategory":"ReferenceApplication","operatingSystem":"Any","softwareVersion":"v3.027","author":{"@type":"Organization","name":"labugs.org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LA County Invertebrate Field Guide","url":"https://labugs.org","description":"Free PWA field guide to 3,438+ invertebrate species of Los Angeles County","applicationCategory":"ReferenceApplication","operatingSystem":"Any","softwareVersion":"v3.028","author":{"@type":"Organization","name":"labugs.org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
-<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.027</span></h1><p class="sub" id="hSub">3,433 species + 5 subspecies across 15 taxa groups</p></header>
+<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.028</span></h1><p class="sub" id="hSub">3,433 species + 5 subspecies across 15 taxa groups</p></header>
 <div id="loadProg" style="display:none;text-align:center;padding:20px 16px;font-family:var(--fb);font-size:14px;color:var(--gold);background:var(--cream)"></div>
 <div class="notch-bg"></div><nav class="tbar" id="tBar"></nav>
 <main class="cnt">
@@ -422,6 +422,7 @@ if(state.observedFilter==='observed')list=list.filter(s=>isO(s));
 if(state.observedFilter==='unobserved')list=list.filter(s=>!isO(s));
 if(state.originFilter)list=list.filter(s=>matchOrigin(s,state.originFilter));
 if(state.elevFilter)list=list.filter(s=>s.elev&&s.elev.includes(state.elevFilter));
+list=list.filter(s=>!s.ssp);
 let xtrHtml='';
 if(state.searchQuery.trim()){const q=state.searchQuery.toLowerCase();
 list=list.filter(s=>s.cn.toLowerCase().includes(q)||s.sn.toLowerCase().includes(q)||s.fam.toLowerCase().includes(q));
@@ -567,7 +568,7 @@ loadState();
 hydrateCache().catch(()=>{});
 
 
-/* === v3.027 Data Loader === */
+/* === v3.028 Data Loader === */
 const DATA_GROUPS=TAXA_ORDER;
 let _dataLoaded=0,_dataTotal=DATA_GROUPS.length;
 
@@ -584,21 +585,36 @@ function updateLoadProgress(){
   }
 }
 
+/* === IndexedDB Offline Species Data === */
+const OIDB_NAME='invertOffline',OIDB_VER=1,OIDB_STORE='speciesData';
+let oidb=null;
+function openOIDB(){return new Promise((res,rej)=>{try{const r=indexedDB.open(OIDB_NAME,OIDB_VER);r.onupgradeneeded=e=>{e.target.result.createObjectStore(OIDB_STORE);};r.onsuccess=e=>{oidb=e.target.result;res(oidb);};r.onerror=()=>rej();}catch(e){rej(e);}});}
+async function saveToOIDB(g,data){if(!oidb)return;try{const tx=oidb.transaction(OIDB_STORE,'readwrite');tx.objectStore(OIDB_STORE).put(data,g);}catch(e){}}
+async function loadFromOIDB(g){if(!oidb)return null;return new Promise(res=>{try{const tx=oidb.transaction(OIDB_STORE,'readonly');const req=tx.objectStore(OIDB_STORE).get(g);req.onsuccess=()=>res(req.result||null);req.onerror=()=>res(null);}catch(e){res(null);}});}
+
 async function loadAllData(){
   if(location.protocol==='file:'){
     const el=document.getElementById('loadProg');
     if(el){el.innerHTML='<b>Local file detected.</b> The v3 split architecture requires an HTTP server.<br>Run <code style="background:#1A3C35;color:#BFA46E;padding:2px 6px;border-radius:3px">python3 -m http.server 8000</code> in the folder containing index.html,<br>then open <a href="http://localhost:8000" style="color:#BFA46E">http://localhost:8000</a>';el.style.display='block';el.style.padding='20px 16px';el.style.lineHeight='1.8';}
     return;
   }
+  try{await openOIDB();}catch(e){console.warn('IDB offline unavailable');}
   const lp=document.getElementById('loadProg');if(lp){lp.style.display='block';lp.textContent='Loading species data\u2026';}
   const promises=DATA_GROUPS.map(async g=>{
     try{
       const r=await fetch('data/'+g+'.json');
       if(!r.ok)throw new Error(r.status);
-      SPECIES_DATA[g]=await r.json();
+      const d=await r.json();
+      SPECIES_DATA[g]=d;
+      saveToOIDB(g,d);
     }catch(e){
-      console.warn('Failed to load '+g+':',e);
-      SPECIES_DATA[g]=[];
+      console.warn('Network failed for '+g+', trying IDB...');
+      const cached=await loadFromOIDB(g);
+      if(cached){SPECIES_DATA[g]=cached;console.log('Loaded '+g+' from IDB offline cache');}
+      else{
+        try{const cr=await caches.match('data/'+g+'.json');if(cr){SPECIES_DATA[g]=await cr.json();console.log('Loaded '+g+' from SW cache');}else{SPECIES_DATA[g]=[];}}
+        catch(e2){SPECIES_DATA[g]=[];}
+      }
     }
     _dataLoaded++;
     updateLoadProgress();
