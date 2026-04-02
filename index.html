@@ -103,6 +103,11 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 .ds-fam{font-size:11px;color:#888;margin-bottom:10px;display:flex;align-items:center;gap:5px}
 .ds-fam .ds-fd{width:10px;height:10px;border-radius:3px;display:inline-block}
 .ds-desc{font-size:13px;line-height:1.6;color:#333;margin-bottom:14px}
+.ds-ssp-section{margin-top:16px;padding:12px;background:#FAF8F4;border-left:3px solid var(--gold);border-radius:6px}
+.ds-ssp-entry{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #e8e3d9;cursor:pointer}
+.ds-ssp-entry:last-child{border-bottom:none}
+.ds-ssp-photo{width:52px;height:52px;border-radius:6px;flex-shrink:0}
+.ds-ssp-info{flex:1;min-width:0}
 .ds-fms{margin-bottom:14px}
 .ds-fmr{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #f0ebe3;font-size:12px;line-height:1.4}
 .ds-fml{min-width:85px;max-width:85px;font-weight:600;color:var(--forest);font-size:11px;flex-shrink:0}
@@ -117,7 +122,7 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 .ds-map{width:100%;height:240px}
 .ds-map-label{font-size:10px;font-weight:600;color:var(--forest);margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase}
 /* Tile status pip — top-left corner, only notable statuses */
-.st-pip{position:absolute;top:6px;left:10px;z-index:3;display:flex;align-items:center;gap:3px;padding:2px 7px 2px 5px;border-radius:8px;font-size:7.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 4px rgba(0,0,0,0.3);pointer-events:none;line-height:1}
+.st-pip{display:flex;align-items:center;gap:3px;padding:2px 7px 2px 5px;border-radius:8px;font-size:7.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 4px rgba(0,0,0,0.3);pointer-events:none;line-height:1}
 .st-pip .st-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 /* Introduced marker — subtle glyph after sci name */
 .endemic-mark{color:#1565C0;font-size:10px;}
@@ -192,7 +197,7 @@ button{font-family:inherit;cursor:pointer}input{font-family:inherit}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"LA County Invertebrate Field Guide","url":"https://labugs.org","description":"Free PWA field guide to 3,438+ invertebrate species of Los Angeles County","applicationCategory":"ReferenceApplication","operatingSystem":"Any","softwareVersion":"v3.028","author":{"@type":"Organization","name":"labugs.org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
-<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.028</span></h1><p class="sub" id="hSub">3,433 species + 5 subspecies across 15 taxa groups</p></header>
+<header class="hdr"><h1>LA County Invertebrate<br>Field Guide <span style="font-size:14px;font-weight:400;opacity:0.6">v3.028</span></h1><p class="sub" id="hSub">3,435 species + 3 subspecies across 15 taxa groups</p></header>
 <div id="loadProg" style="display:none;text-align:center;padding:20px 16px;font-family:var(--fb);font-size:14px;color:var(--gold);background:var(--cream)"></div>
 <div class="notch-bg"></div><nav class="tbar" id="tBar"></nav>
 <main class="cnt">
@@ -316,13 +321,14 @@ ppq();}
 
 async function fetchLL(){if(!state.inatUsername)return;state.lifeListLoading=true;rLL();
 const res={};for(const k of TAXA_ORDER){const cfg=TAXA[k];
-try{const r=await fetch(`https://api.inaturalist.org/v1/observations/species_counts?user_id=${encodeURIComponent(state.inatUsername)}&place_id=${cfg.placeId}&taxon_id=${cfg.iNatTaxonId}&per_page=500`);
-const d=await r.json();const ids=new Set(),names=new Set();
-for(const x of(d.results||[])){if(x.taxon?.id)ids.add(x.taxon.id);if(x.taxon?.name)names.add(x.taxon.name.toLowerCase());}
-res[k]={ids,names};}catch{res[k]={ids:new Set(),names:new Set()};}}
+const ids=new Set(),names=new Set();let page=1,more=true;
+while(more){try{const r=await fetch(`https://api.inaturalist.org/v1/observations/species_counts?user_id=${encodeURIComponent(state.inatUsername)}&place_id=${cfg.placeId}&taxon_id=${cfg.iNatTaxonId}&captive=false&verifiable=true&per_page=500&page=${page}`);
+const d=await r.json();for(const x of(d.results||[])){if(x.taxon?.id)ids.add(x.taxon.id);if(x.taxon?.name)names.add(x.taxon.name.toLowerCase());}
+more=(d.results||[]).length===500;page++;}catch{more=false;}}
+res[k]={ids,names};}
 state.lifeListData=res;state.lifeListLoading=false;render();}
 
-function isO(sp,taxon){const d=state.lifeListData[taxon||state.activeTaxon];if(!d)return false;const r=state.resolvedTids[sp.sn];if(r&&d.ids.has(r))return true;const sn=sp.sn.toLowerCase();if(d.names.has(sn))return true;const parts=sn.split(' ');if(parts.length>=3&&d.names.has(parts[0]+' '+parts[1]))return true;return false;}
+function isO(sp,taxon){const d=state.lifeListData[taxon||state.activeTaxon];if(!d)return false;const r=state.resolvedTids[sp.sn];if(r&&d.ids.has(r))return true;const sn=sp.sn.toLowerCase();if(d.names.has(sn))return true;const parts=sn.split(' ');if(parts.length>=3&&d.names.has(parts[0]+' '+parts[1]))return true;if(typeof NAME_ALIASES!=='undefined'){for(const[oldN,newN]of Object.entries(NAME_ALIASES)){if(newN.toLowerCase()===sn&&d.names.has(oldN.toLowerCase()))return true;if(oldN.toLowerCase()===sn&&d.names.has(newN.toLowerCase()))return true;}}return false;}
 
 function sC(){const c={};for(const k of TAXA_ORDER)c[k]=(SPECIES_DATA[k]||[]).filter(sp=>!sp.ssp).length;return c;}
 function sspC(k){return(SPECIES_DATA[k]||[]).filter(sp=>sp.ssp).length;}
@@ -484,6 +490,8 @@ const url='https://la-flora.org/?species='+encodeURIComponent(x.sn);
 h+='<a class="ds-xl-link" href="'+url+'" target="_blank" rel="noopener">'+lbl+': <strong>'+x.cn+'</strong> <span class="ds-xl-sn">'+x.sn+'</span> <span class="ds-xl-arrow">\u2197 la-flora</span></a>';}
 return h+'</div>';}
 
+function rSSP(sp){if(sp.ssp)return '';const prefix=sp.sn.toLowerCase();const subs=(SPECIES_DATA[state.activeTaxon]||[]).filter(s=>s.ssp&&s.sn.toLowerCase().startsWith(prefix));if(!subs.length)return '';let h='<div class="ds-ssp-section"><div style="font-weight:700;font-size:13px;margin-bottom:8px;color:var(--forest)">Subspecies ('+subs.length+')</div>';for(const s of subs){const ca=state.photoCache[s.sn];const ps=ca&&ca.url?`background:url(${ca.url}) center/cover no-repeat`:'background:#e8e3d9';const obs=isO(s);h+=`<div class="ds-ssp-entry" onclick="openDS(SPECIES_DATA['${state.activeTaxon}'].find(x=>x.sn==='${s.sn}'))"><div class="ds-ssp-photo" style="${ps}"></div><div class="ds-ssp-info"><div style="font-weight:600;font-size:13px">${s.cn}${obs?' <span style="color:#3A9B68">✓</span>':''}</div><div style="font-style:italic;font-size:11px;color:#666">${s.sn}</div><div style="font-size:11px;color:#555;margin-top:2px">${s.hp||''}</div></div></div>`;}return h+'</div>';}
+
 function rFM(sp){if(!sp.fm)return '';let h='';for(const[l,v]of Object.entries(sp.fm))h+=`<div class="ds-fmr"><span class="ds-fml">${l}</span><span class="ds-fmv">${v}</span></div>`;return h;}
 
 function openDS(sp){
@@ -504,7 +512,7 @@ let h=`<div class="ds-ovr" id="dsOvr"><div class="ds-sheet" id="dsSheet">
 <span class="ds-sb" style="color:${st.color||'#999'};background:${st.bg||'#f5f5f5'};border:1px solid ${(st.color||'#999')}30">${st.label||sp.st}</span></div>
 <div class="ds-fam"><span class="ds-fd" style="background:${fc}"></span>${sp.fam}${(INTRO_SET.has(sp.sn)||INTRO_SET.has(sp.sn.split(' ').slice(0,2).join(' ')))?'<span style="margin-left:8px;font-size:9px;color:#D4760A;font-weight:600">✦ Introduced</span>'+(INVASIVE_SET.has(sp.sn)||INVASIVE_SET.has(sp.sn.split(' ').slice(0,2).join(' '))?'<span class="ds-inv">INVASIVE</span>':''):''}</div>
 ${(()=>{const c=CONSERVATION[sp.sn]||CONSERVATION[sp.sn.split(' ').slice(0,2).join(' ')];if(!c)return '';let badges='';if(c.iucn)badges+=`<span class="ds-cons-badge ds-cons-iucn ${c.iucn.toLowerCase()}">IUCN ${c.iucnFull||c.iucn}</span>`;if(c.esa)badges+=`<span class="ds-cons-badge ds-cons-esa">ESA ${c.esa}</span>`;if(c.cesa)badges+=`<span class="ds-cons-badge ds-cons-cesa">CESA ${c.cesa}</span>`;if(c.state)badges+=`<span class="ds-cons-badge ds-cons-state">${c.state}</span>`;return `<div class="ds-cons"><div class="ds-cons-badges">${badges}</div>${c.note||''}</div>`;})()}
-<div class="ds-desc">${sp.desc}</div>${rElev(sp)}${rPhen(sp)}${rHP(sp)}${rXL(sp)}
+<div class="ds-desc">${sp.desc}</div>${rElev(sp)}${rPhen(sp)}${rHP(sp)}${rXL(sp)}${rSSP(sp)}
 <div class="ds-map-label">LA County Observations</div>
 <div class="ds-map-wrap">
 <div class="ds-map" id="dsMap"></div>
